@@ -1,0 +1,73 @@
+
+1. pom 中添加包
+
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.17.RELEASE</version>
+  </parent>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+
+      <!--swagger 必要的两个引用 -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.9.2</version>
+    </dependency>
+  </dependencies>
+
+2.  SwaggerConfig  配置swagger 通用代码  basePackage中配置controller所在路径即可
+basePackage("com.tz.leo.swagge.controller")
+
+
+3. 启动springBoot项目  访问页面
+
+http://localhost:8080/swagger-ui.html
+
+application.properties
+server.port=8989
+http://localhost:8989/swagger-ui.html
+
+
+4. swagger 注解的使用
+
+---------------------------
+@Api
+@ApiOperation
+@ApiImplicitParams
+@ApiResponses
+---------------------------
+
+01   @Api                          类上   指定接口描述文字
+02   @ApiOperation                 方法上 指定方法描述文字
+         value: 简介
+         notes: 详细说明 可以带 html标签
+03   @ApiImplicitParams 用在方法上  表示对参数的描述
+     @ApiImplicitParams({
+            @ApiImplicitParam(name = "id",value = "用户id",dataType = "String" ,defaultValue = "21"),
+            @ApiImplicitParam(name="name" ,value = "用户姓名" ,dataType = "String",defaultValue = "张老四")
+     })
+04  @ApiResponses  用在方法上，表示一组响应  自定义401 400 等 状态码
+
+
+
+
+
+
+
+
+
+
